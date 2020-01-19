@@ -10,10 +10,12 @@ Function.prototype.apply2 = function (context, arr) {
 
     let result = context.fn(...arr);
     delete context.fn;
-    return result;
-
-    
+    return result; 
 }
+
+
+
+
 
 
 // 测试一下

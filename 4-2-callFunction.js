@@ -25,12 +25,13 @@ Function.prototype.call3 = function (context) {
 
     context.fn = this;
     var args = Array.from(arguments).slice(1);
-    // eval('context.fn(' + args + ');')
     var result = context.fn(...args);
     delete context.fn;
 
     return result;
 }
+
+
 
 
 
