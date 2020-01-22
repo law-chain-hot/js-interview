@@ -18,6 +18,10 @@ Function.prototype.apply2 = function (context, arr) {
 
 
 
+
+
+
+
 // 测试一下
 var foo = {
     value: 1

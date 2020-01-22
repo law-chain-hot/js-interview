@@ -107,3 +107,53 @@ var bindFoo = bar.bind2(null);
 bindFoo.prototype.value = 1;
 
 console.log(bar.prototype.value) // 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Final
+// 最终版
+Function.prototype.bind_final = function (context) {
+    if (typeof this !== "function") {
+        throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    // $$$$$$$$$$$$$$$$$ There $$$$$$$$$$$$$$$$$
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+
+    var fNOP = function () { };
+
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+    }
+    // $$$$$$$$$$$$$$$$$ There $$$$$$$$$$$$$$$$$
+
+    fNOP.prototype = self.prototype;
+    fBound.prototype = new fNOP();
+    return fBound;
+}
+
+
+
+
+Function.prototype.bind3 = function (context) {
+    var self = this;                                            // this means invoked method
+    var args = Array.prototype.slice.call(arguments, 1);
+    return function () {
+        var bindArgs = Array.from(arguments);
+        return self.apply(context, args.concat(bindArgs));
+    }
+}

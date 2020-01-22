@@ -9,8 +9,8 @@ function findGroup(arr, n, sum) {
         for (var i = 0; i < arr.length; i++) {
             var temp = arr.slice(i + 1, arr.length);
             return findGroup(temp, n - 1, sum - arr[i])  // 表示选了一个数
-                ||
-                findGroup(temp, n, sum); // 表示没选一个数
+                   ||
+                   findGroup(temp, n, sum); // 表示没选一个数
         }
 }
 
@@ -18,6 +18,9 @@ function findGroup(arr, n, sum) {
 let arr = [4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1]
 
 console.log(findGroup(arr, 5, 12));
+
+
+
 
 
 getCombination = function (arr, num) {  //  索引数组 操作数数量

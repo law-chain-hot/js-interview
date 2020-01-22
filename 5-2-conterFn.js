@@ -1,7 +1,6 @@
 // return obj
 function counter(v) {
     var num = v;
-    var that = this;
     return  {
         add: function(){
             num++;

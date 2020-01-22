@@ -62,3 +62,26 @@ function bar_return(name, age) {
 }
 
 console.log(bar_return.call3(foo, 'kevin', 18)); 
+
+
+
+
+
+
+
+
+
+
+
+// final
+// Version 3
+Function.prototype.call3 = function (context) {
+    var context = context || Window;    // if context is 'null'
+
+    context.fn = this;
+    var args = Array.from(arguments).slice(1);
+    var result = context.fn(...args);
+    delete context.fn;
+
+    return result;
+}

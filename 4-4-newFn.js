@@ -4,7 +4,7 @@ function newFn() {
     var Par = [].shift.apply(arguments);
 
     obj.__proto__ = Par.prototype;
-
+      
     var type = Par.apply(obj, arguments);
     res = typeof type === 'object' ? res : obj;
 
@@ -15,11 +15,23 @@ function newFn() {
 
 
 
+
+
+
+
+
+
+
+
 // test
 function Otaku (name, age) {
     this.name = name;
     this.age = age;
     this.habit = 'Games';
+    console.log(this.habit);
+    console.log(this.age);
+    console.log('---over---');
+    console.log('');
 }
 
 Otaku.prototype.strength = 60;
@@ -35,3 +47,10 @@ console.log(person.habit) // Games
 console.log(person.strength) // 60
 
 person.sayYourName(); // I am Kevin
+
+console.log('');
+var person2 = new Otaku('brain', '20')
+
+
+
+
