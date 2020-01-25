@@ -26,7 +26,7 @@ Function.prototype.bind2 = function (context) {
 }
 
 // 最终版
-Function.prototype.bind_final = function (context) {
+Function.prototype.bind_final = function (context, ...params) {
 
     if (typeof this !== "function") {
         throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
@@ -34,11 +34,15 @@ Function.prototype.bind_final = function (context) {
 
     var self = this;
     var args = Array.prototype.slice.call(arguments, 1);
+    console.log(args);
+    console.log(params);
 
     var fNOP = function () { };
 
-    var fBound = function () {
+    var fBound = function (...params) {
         var bindArgs = Array.prototype.slice.call(arguments);
+        console.log('bindArgs', bindArgs);
+        console.log('params', params);
         return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
     }
 
@@ -66,7 +70,7 @@ function bar(name, age, age2) {
 
 bar.prototype.friend = 'Kevin';
 
-var bindFoo = bar.bind2(foo, 'daisy');
+var bindFoo = bar.bind_final(foo, 'daisy', 'ke');
 var xx = bindFoo('18');
 // 1
 // daisy
@@ -102,7 +106,7 @@ Function.prototype.bind2 = function (context) {
 
 function bar() { }
 
-var bindFoo = bar.bind2(null);
+var bindFoo = bar.bind_final(null);
 
 bindFoo.prototype.value = 1;
 
@@ -132,6 +136,7 @@ Function.prototype.bind_final = function (context) {
     // $$$$$$$$$$$$$$$$$ There $$$$$$$$$$$$$$$$$
     var self = this;
     var args = Array.prototype.slice.call(arguments, 1);
+    
 
     var fNOP = function () { };
 
