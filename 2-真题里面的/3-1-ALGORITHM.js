@@ -194,7 +194,8 @@ console.log(mergeSort(arr));
 // console.log(quickSort2(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 
 
-
+// (1) 枢轴的选取方式的优化：
+// 枢轴的选取方式有：(1) 固定位置选取；(2) 随机位置选取； (3) 三值取中法 等
 // DIY
 let quickSort = function (arr) {
     let len = arr.length;

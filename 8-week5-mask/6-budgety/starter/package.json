@@ -1,0 +1,14 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "qianhao",
+  "license": "ISC",
+  "dependencies": {
+    "mask-guide": "^2.0.10"
+  }
+}

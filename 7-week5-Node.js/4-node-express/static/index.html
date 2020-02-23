@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/main.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome to express of Youtube</h1>
+
+    <form action="/post" method="POST" id="form">
+        <div>
+            <label for="email">Email address: </label>
+            <input type="email" class="form-control" name="email3">
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <div>
+            <button type="submit">submit</button>
+        </div>
+
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('#form').submit((e) => {
+                e.preventDefault();
+                $.ajax({
+                    url: '/post',
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify($('#form').serializeArray()),
+                    success: (response) => {
+                        console.log('clint: successfully got response')
+                        console.log('response: ' + response);
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

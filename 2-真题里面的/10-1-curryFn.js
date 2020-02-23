@@ -18,7 +18,7 @@ function paritial(fn, ...args1) {
     console.log(args1)
     var returnFn = function (...args2) {
         var newArgs = args1.concat(args2);
-        console.log(newArgs)
+        // console.log(newArgs)
         return fn.apply(null, newArgs);
     }
     return returnFn;

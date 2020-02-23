@@ -50,7 +50,7 @@ test.emit('2', 'once test again');
 
 
 
-
+// ----------------------------------------------------------------------------------------------------------------
 // Facebook
 // 1. implement clearAllTimeout
 let oldTimeout = global.setTimeout;

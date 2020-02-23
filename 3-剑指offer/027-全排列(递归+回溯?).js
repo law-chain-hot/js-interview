@@ -19,6 +19,8 @@ function getResult(arr, index){
     for (let i = index; i < arr.length; ++i){
         if (i == index || arr[i] !== arr[index]){
             swap(arr, index, i);
+            console.log(arr);
+            
             getResult(arr, index+1);
             swap(arr, index, i);
         }
@@ -37,7 +39,7 @@ function Permutation(str)
     return result.sort();
 }
 
-console.log(Permutation('aa'));
+console.log(Permutation('abc'));
 
 
 
