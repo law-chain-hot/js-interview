@@ -136,7 +136,7 @@ Function.prototype.bind_final = function (context) {
     // $$$$$$$$$$$$$$$$$ There $$$$$$$$$$$$$$$$$
     var self = this;
     var args = Array.prototype.slice.call(arguments, 1);
-    
+
 
     var fNOP = function () { };
 
@@ -161,4 +161,30 @@ Function.prototype.bind3 = function (context) {
         var bindArgs = Array.from(arguments);
         return self.apply(context, args.concat(bindArgs));
     }
+}
+
+
+// #################
+// bind ali
+Function.prototype.bind_Ali = function (context, ...args1) {
+    // if this is not function
+    if (typeof context !== "function") {
+        throw new Error("This is not a function")
+    }
+
+    let that = this
+    let emptyObj = {}
+    let boundFn = function (...args2){
+        // if use 'new'
+        if (this instanceof boundFn) {
+            context = emptyObj
+        }
+        return this.apply(context, agrs1.contact(arg2))
+    }
+
+    emptyObj.prototype = that.prototype;
+    boundFn = new emptyObj();
+
+    return boundFn
+ 
 }

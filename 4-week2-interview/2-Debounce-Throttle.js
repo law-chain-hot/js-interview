@@ -3,11 +3,11 @@
 function debounce(callback, wait) {
     let timeout = null;
 
-    return function () {
+    return function (...args) {
         let self = this;
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            callback.apply(self);
+            callback.apply(self, args);
         }, wait)
     }
 }
@@ -19,13 +19,13 @@ function debounce(callback, wait) {
 function throttle(callback, wait) {
     let canRun = true;
     
-    return function() {
+    return function(...args) {
         let self = this;
 
         if (!canRun) return;
         canRun = false;
         setTimeout(() => {
-            callback.apply(self);
+            callback.apply(self, args);
             canRun = true;
         }, wait);
     }

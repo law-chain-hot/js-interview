@@ -38,7 +38,7 @@ Function.prototype.call = function (context) {
 // Test
 // 测试一下
 var foo = {
-    value: 1
+    value: 'foo'
 };
 
 function bar(name, age) {
@@ -75,13 +75,13 @@ function bar_return(name, age) {
 
 // final
 // Version 3
-Function.prototype.call3 = function (context) {
+Function.prototype.call3 = function (context, ...args_new) {
     var context = context || Window;    // if context is 'null'
 
     context.fn = this;
-    var args = Array.from(arguments).slice(1);
-    // console.log('args:',args)
-    var result = context.fn(...args);
+    console.log(args_new instanceof Array);
+    
+    var result = context.fn(...args_new);
     delete context.fn;
 
     return result;

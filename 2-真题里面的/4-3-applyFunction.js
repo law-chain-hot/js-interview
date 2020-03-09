@@ -1,4 +1,4 @@
-Function.prototype.apply2 = function (context, ...arr) {
+Function.prototype.apply2 = function (context, arr) {
     var context = context || Window;
     context.fn = this;                      // get the function
     // console.log(arr)
@@ -10,7 +10,7 @@ Function.prototype.apply2 = function (context, ...arr) {
 
     let result = context.fn(...arr);
     delete context.fn;
-    return result; 
+    return result;
 }
 
 
@@ -18,7 +18,21 @@ Function.prototype.apply2 = function (context, ...arr) {
 
 
 
+Function.prototype.apply_for_ali = function (context, arr) {
+    // if that is 'null'
+    var context = context || Window;
 
+    context.fn = this;
+    let result = null;
+
+    if (arr) {
+        result = context.fn(...arr);
+    } else {
+        result = context.fn()
+    }
+    delete context.fn
+    return result;
+}
 
 
 
@@ -33,6 +47,6 @@ function bar(name, age) {
     console.log('this.value: ', this.value);
 }
 
-bar.apply2(foo, ['kevin', 18]); 
+bar.apply_for_ali(foo, ['kevin', 18]);
 
 

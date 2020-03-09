@@ -52,7 +52,7 @@ console.log(selectionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 4
 //-------------------------------------------------------------------------------------
 // 3. Insertion Sort
 function insertionSort(array) {
-    if (Object.prototype.toString.call(array).slice(8, -1) === 'Array') {
+    if (Array.isArray(array)) {
         console.time('插入排序耗时：');
         for (var i = 1; i < array.length; i++) {
             var key = array[i];
@@ -206,7 +206,7 @@ let quickSort = function (arr) {
     // If not turn
     // let pivotIndex = Math.floor(len / 2);
     let pivotIndex = len >> 1;
-    let pivotValue = arr.splice(pivotIndex, 1)[0] // using [0], cuz it is an array
+    let pivotValue = arr.splice(pivotIndex-1, 1)[0] // using [0], cuz it is an array
 
     let left = [];
     let right = [];
@@ -228,6 +228,9 @@ let quickSort = function (arr) {
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log("6.快速排序（Quick Sort）");
 console.log(quickSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+
+
+
 
 
 

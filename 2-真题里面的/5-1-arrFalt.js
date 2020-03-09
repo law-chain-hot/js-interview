@@ -31,3 +31,24 @@ function flatten(arr) {
   const problem = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
   
   flatten(problem); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+
+
+
+// =======
+// flat Ali
+function flat_Ali (arr) {
+  const result = [];
+  arr.forEach((el)=>{
+    if (Array.isArray(el)) result.push(...flat_Ali(el));
+    else result.push(el)
+  })
+
+  return result
+}
+
+  // Usage
+  const problem2 = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
+  
+  flat_Ali(problem2); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
