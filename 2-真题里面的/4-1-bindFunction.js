@@ -183,7 +183,7 @@ Function.prototype.bind_Ali = function (context, ...args1) {
     }
 
     emptyObj.prototype = that.prototype;
-    boundFn = new emptyObj();
+    boundFn.prototype = new emptyObj();
 
     return boundFn
  
