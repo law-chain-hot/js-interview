@@ -80,6 +80,8 @@ Function.prototype.call3 = function (context, ...args_new) {
 
     context.fn = this;
     console.log(args_new instanceof Array);
+    console.log(Array.isArray(args_new));
+
     
     var result = context.fn(...args_new);
     delete context.fn;
