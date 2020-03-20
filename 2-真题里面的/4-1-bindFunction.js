@@ -154,12 +154,12 @@ Function.prototype.bind_final = function (context) {
 
 
 
-Function.prototype.bind3 = function (context) {
+Function.prototype.bind3 = function (context, ...args) {
     var self = this;                                            // this means invoked method
-    var args = Array.prototype.slice.call(arguments, 1);
+    // var args = Array.prototype.slice.call(arguments, 1);
     return function () {
-        var bindArgs = Array.from(arguments);
-        return self.apply(context, args.concat(bindArgs));
+        // var bindArgs = Array.from(arguments);
+        return self.apply(context, args.concat(...args));
     }
 }
 

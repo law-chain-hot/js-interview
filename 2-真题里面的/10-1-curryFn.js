@@ -1,4 +1,5 @@
 // 柯里化
+// curry 的这种用途可以理解为：参数复用。本质上是降低通用性，提高适用性。
 function curry(callback, arr = []) {
     // if (!arr) arr = [];
     if (arr.length === callback.length)

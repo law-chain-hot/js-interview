@@ -79,8 +79,8 @@ Function.prototype.call3 = function (context, ...args_new) {
     var context = context || Window;    // if context is 'null'
 
     context.fn = this;
-    console.log(args_new instanceof Array);
-    console.log(Array.isArray(args_new));
+    // console.log(args_new instanceof Array);
+    // console.log(Array.isArray(args_new));
 
     
     var result = context.fn(...args_new);

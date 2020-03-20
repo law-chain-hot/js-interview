@@ -6,8 +6,6 @@ function newFn(that, ...args) {
     // console.log("++++++" + Par);
 
     
-    
-
     obj.__proto__ = Par.prototype;
       
     var type = Par.apply(obj, arguments);
@@ -16,9 +14,11 @@ function newFn(that, ...args) {
     return res;
 }
 
+
+
+
 // ##################
 // ali new
-
 function new_Ali(parent, ...args) {
     let obj = new Object()
     obj.__proto__ = parent.prototype
