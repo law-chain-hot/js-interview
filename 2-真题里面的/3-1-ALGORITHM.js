@@ -204,26 +204,20 @@ let quickSort = function (arr) {
     if (len < 2) return (arr);
 
     // If not turn
-    // let pivotIndex = Math.floor(len / 2);
-    let pivotIndex = len >> 1;
-    let pivotValue = arr.splice(pivotIndex-1, 1)[0] // using [0], cuz it is an array
+    let pivotIndex = len >> 1;  // let pivotIndex = Math.floor(len / 2);
+    let pivotValue = arr.splice(pivotIndex - 1, 1)[0] // using [0], cuz it is an array
 
     let left = [];
     let right = [];
 
-    // traverse the arr
-    for (let i = 0; i < len - 1; i++) {
-        if (arr[i]<pivotValue){
-            left.push(arr[i]);
-        }
-        else {
-            right.push(arr[i]);
-        }
-    }
+    // functional programming
+    arr.forEach((cur) => {
+        cur < pivotValue ? left.push(cur) : right.push(cur)
+    })
 
     return quickSort(left).concat([pivotValue], quickSort(right));
 
-} 
+}
 
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log("6.快速排序（Quick Sort）");
@@ -252,7 +246,7 @@ let quickSort_k_min = function (arr, k) {
 
     // traverse the arr
     for (let i = 0; i < len - 1; i++) {
-        if (arr[i]<pivotValue){
+        if (arr[i] < pivotValue) {
             left.push(arr[i]);
         }
 
@@ -267,8 +261,8 @@ let quickSort_k_min = function (arr, k) {
     }
     return quickSort(left).concat([pivotValue], quickSort(right));
 
-} 
+}
 
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log("6.快速排序（Quick Sort）: 最小的k个数");
-console.log(quickSort(arr,3));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+console.log(quickSort(arr, 3));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
