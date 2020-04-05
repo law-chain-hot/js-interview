@@ -1,11 +1,13 @@
 
+
+
 // Version 1
-Lodash
+// Lodash
 /**
  * Lodash js库
  * 使用 cloneDeepWith
  */
-_.cloneDeepWith(value, [customizer])
+// _.cloneDeepWith(value, [customizer])
 
 
 
@@ -43,7 +45,6 @@ let deepClone = (target, map = new WeakMap()) => {
 
 
 
-
 // Case1: normal
 const target1 = {
     field1: 1,
@@ -77,7 +78,7 @@ const target = {
     },
     field4: [2, 4, 8]
 };
-target.targetself = target;
+target1.targetself = target;
 
 
 // test
@@ -112,3 +113,48 @@ console.log('')
 console.log('JSON.parse(JSON.stringify(target1))')
 
 console.log(JSON.parse(JSON.stringify(target1)))
+
+
+
+
+
+// =========
+const deepCloneTest =  (target, map = new WeakMap()) => {
+    // check if target is arr OR obj
+    const newContainer = Array.isArray(target) ? [] : {}
+
+    // avoid calling itself
+    if (map.get(target)) {
+        return map.get(target)
+    } else {
+        map.set(target, newContainer)
+    }
+
+    // clone part
+    for (let key in target) {
+        if (typeof target[key] === 'object') {
+            // recursive part
+            newContainer[key] = deepCloneTest(target[key], map)
+        } else {
+            newContainer[key] = target[key]
+        }
+    }
+
+    return newContainer
+}
+
+
+
+function unique (arr) {
+    const seen = new Map()
+    return arr.filter((cur, index, array) => {
+        if (seen.has(cur)) {
+            return false
+        } else {
+            return seen.set(cur, 1)
+        }
+    })
+}
+
+let arr = [1,2,3,3,4,5]
+console.log("unique(arr)", unique(arr))
