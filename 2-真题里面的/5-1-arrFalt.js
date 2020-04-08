@@ -52,3 +52,6 @@ function flat_Ali (arr) {
   const problem2 = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
   
   flat_Ali(problem2); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+  

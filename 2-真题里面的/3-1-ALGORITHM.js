@@ -25,7 +25,7 @@ console.log(bubbleSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 
 //-------------------------------------------------------------------------------------
 // 2. Selection sort
 function selectionSort(arr) {
-    var len = arr.length;
+    const len = arr.length;
     var minIndex, temp;
     console.time('选择排序耗时');
     for (var i = 0; i < len - 1; i++) {
