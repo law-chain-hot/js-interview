@@ -46,3 +46,36 @@ var foo = function () {
     };
     return foo();
 };
+
+
+
+// ========================
+// 官方柯里化
+function looseCurry(fn,arity = fn.length) {
+    return (function nextCurried(prevArgs){
+        return function curried(...nextArgs){
+            var args = [ ...prevArgs, ...nextArgs ];
+
+            if (args.length >= arity) {
+                return fn( ...args );
+            }
+            else {
+                return nextCurried( args );
+            }
+        };
+    })( [] );
+}
+
+
+
+function uncurry(fn) {
+    return function uncurried(...args){
+        var ret = fn;
+
+        for (let arg of args) {
+            ret = ret( arg );
+        }
+
+        return ret;
+    };
+}
