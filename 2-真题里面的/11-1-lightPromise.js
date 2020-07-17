@@ -1,4 +1,4 @@
-function Promise1(excutor) {
+function Promise(excutor) {
     var self = this
     self.onResolvedCallback = []
     function resolve(value) {
@@ -9,7 +9,7 @@ function Promise1(excutor) {
     }
     excutor(resolve.bind(self))
 }
-Promise1.prototype.then = function (onResolved) {
+Promise.prototype.then = function (onResolved) {
     var self = this
     return new Promise(resolve => {
         self.onResolvedCallback.push(function () {
