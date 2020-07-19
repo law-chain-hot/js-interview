@@ -12,6 +12,6 @@
     "save": "^2.4.0"
   },
   "devDependencies": {
-    "lodash": "~4.17.15" // major version. minor. patch
+    "lodash": "~4.17.19" // major version. minor. patch
   }
 }
