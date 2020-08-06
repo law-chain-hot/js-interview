@@ -14,3 +14,13 @@ function counts(article) {
     console.log(maxword + " " + max);
 }
 counts("Age AGE AGE Age age, has reached the end of the beginning of a word. May be guilty in his seems to passing a lot of different life became the appearance of the same day;");
+
+
+
+
+
+
+
+
+
+

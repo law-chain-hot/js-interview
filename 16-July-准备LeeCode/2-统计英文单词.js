@@ -2,10 +2,14 @@ function counts(article) {
 
     // Stratagy 1
     var array = article.trim().toLowerCase().match(/[A-z]+/gi);
+    // var array = article.trim().toLowerCase().match(/\w+/gi);
+
 
     // // Stratagy 2
     // article = article.trim().toLowerCase().replace(/[^a-z0-9]/g, '@')
     // var array = article.split('@').filter(cur => cur !== '');
+    console.log(array)
+    
     
 
     

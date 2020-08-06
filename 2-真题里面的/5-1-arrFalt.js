@@ -38,10 +38,11 @@ function flatten(arr) {
 
 // =======
 // flat Ali
-function flat_Ali (arr) {
+function flat_Ali (arr, index) {
+  if(index === 0) return arr
   const result = [];
   arr.forEach((el)=>{
-    if (Array.isArray(el)) result.push(...flat_Ali(el));
+    if (Array.isArray(el)) result.push(...flat_Ali(el, index - 1));
     else result.push(el)
   })
 
@@ -51,7 +52,7 @@ function flat_Ali (arr) {
   // Usage
   const problem2 = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
   
-  flat_Ali(problem2); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  console.log(flat_Ali(problem2, 1)); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
   

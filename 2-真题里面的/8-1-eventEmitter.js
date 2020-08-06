@@ -120,3 +120,49 @@ console.log(emitter._eventLoop)
 
 
 // 45min一面
+
+
+/**
+ * 2020.07.26
+ * There are 2 kinds of eventEmitter
+ * 
+ */
+class normalEventEmitter{
+    construtor(){
+        this._eventLoop = {}
+    }
+    
+    /**
+     * 
+     * @param {string} event
+     * @param {function} callback
+     */
+    on(event, callback){
+        if(this._eventLoop[event] !== undefined){
+            this._eventLoop[event].push(callback)
+        } else {
+            this._eventLoop[event] = [callback]
+        }
+    }
+
+    emit(event, ...params){
+        if(this._eventLoop[event] !== undefined){
+            this._eventLoop[event].forEach(callback => callback(...paprams))
+        }
+    }
+
+    remove(event){
+        if(this._eventLoop[event] !== undefined){
+            delete this._eventLoop[event]
+        }
+    }
+
+    once(event, callback){
+        let onceCallback = function(...params){
+            callback(...params)
+            delete this._eventLoop[event]
+        }
+        this.on(event, onceCallback)
+    }
+
+}
