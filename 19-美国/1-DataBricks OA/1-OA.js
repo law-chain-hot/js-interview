@@ -216,3 +216,69 @@ Answer:
 **所以我们可以只维护目前收到的矩形的最长长边和最长短边**
 
 */
+
+
+
+
+
+
+/*
+第四题：给一个list of integer, 包含负数，对与两个index i,j, i <= j, find the number of combinations that input + input[j] 
+       equals to some power of 2.
+             例如：For input = [1, -1, 2, 3], the output should be pairSummingToPowerOfTwo(a) = 5.
+                      (1, 2): a[1] + a[2] = -1 + 2 = 1.
+                      (0, 0): a[0] + a[0] = 1 + 1 = 2.
+                      (1, 3): a[1] + a[3] = -1 + 3 = 2.
+                      (0, 3): a[0] + a[3] = 1 + 3 = 4.
+                      (2, 2): a[2] + a[2] = 2 + 2 = 4.
+*/
+
+
+
+/*
+Create all possibilities of power of 2
+
+Have a hashmap,  
+    1. Stored key: visted number.
+    2. Checkd key: possibilities - currentNum
+
+for each number
+    1. check if its own is power of two.  If (num & num - 1) === 0    it is 
+    2. then, check it the map contains (possibilities - currentNum)
+    3. Add the curr number into the map
+*/
+
+
+function pairSummingToPowerOfTwo(a) {
+    // init
+    let count = 0
+    const hashVisited = {}
+
+    // Create all possibilities
+    allPowerOfTwo = []
+    for(let i = 0; i < 32; i++){
+        allPowerOfTwo.push(Math.pow(2, i))
+    }
+
+    for(let curr of a){
+        // check if curr is power of 2
+        if((curr & curr - 1) === 0) count++
+        // check if map contains for all power of two
+        for(let power of allPowerOfTwo){
+            if(hashVisited[power - curr] !== undefined){
+                count++
+            }
+        }
+        // add
+        hashVisited[curr] = 0
+    }
+
+    return count
+}
+
+let test = [1, -1, 2, 3]
+console.log(pairSummingToPowerOfTwo(test))
+
+
+
+

@@ -21,12 +21,32 @@ function throttle(callback, wait) {
     
     return function(...args) {
         let self = this;
+        if (!canRun) {
+            return;
+        }
+        else{
+            canRun = false;
+            setTimeout(() => {
+                callback.apply(self, args);
+                canRun = true;
+            }, wait);
+        }
+    }
+}
 
-        if (!canRun) return;
-        canRun = false;
-        setTimeout(() => {
-            callback.apply(self, args);
-            canRun = true;
-        }, wait);
+
+// 2020.09.16
+// real throttle
+function throttle(fn, wait){
+    let canRun = true
+    let self = this
+    return function(...args){
+        if (canRun){
+            canRun = false
+            fn.apply(self, args)
+            setTimeout(()=>{
+                canRun = true
+            }, wait)
+        }
     }
 }
