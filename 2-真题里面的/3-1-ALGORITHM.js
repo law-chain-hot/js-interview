@@ -5,8 +5,8 @@ function bubbleSort(arr) {
     console.time('冒泡排序耗时');
     for (var i = 0; i < len; i++) {
         for (var j = 0; j < len - 1 - i; j++) {
-            if (arr[j] > arr[j + 1]) {        //相邻元素两两对比
-                var temp = arr[j + 1];        //元素交换
+            if (arr[j] > arr[j + 1]) { //相邻元素两两对比
+                var temp = arr[j + 1]; //元素交换
                 arr[j + 1] = arr[j];
                 arr[j] = temp;
             }
@@ -16,7 +16,7 @@ function bubbleSort(arr) {
     return arr;
 }
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
-console.log(bubbleSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+console.log(bubbleSort(arr)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 
 
 
@@ -31,8 +31,8 @@ function selectionSort(arr) {
     for (var i = 0; i < len - 1; i++) {
         minIndex = i;
         for (var j = i + 1; j < len; j++) {
-            if (arr[j] < arr[minIndex]) {     //寻找最小的数
-                minIndex = j;                 //将最小数的索引保存
+            if (arr[j] < arr[minIndex]) { //寻找最小的数
+                minIndex = j; //将最小数的索引保存
             }
         }
         temp = arr[i];
@@ -43,7 +43,7 @@ function selectionSort(arr) {
     return arr;
 }
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
-console.log(selectionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+console.log(selectionSort(arr)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 
 
 
@@ -70,7 +70,7 @@ function insertionSort(array) {
     }
 }
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
-console.log(insertionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+console.log(insertionSort(arr)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 
 
 
@@ -139,8 +139,7 @@ function merge(arr1, arr2) {
     while (arr1.length && arr2.length) {
         if (arr1[0] > arr2[0]) {
             result.push(arr2.shift());
-        }
-        else {
+        } else {
             result.push(arr1.shift());
         }
     }
@@ -204,7 +203,7 @@ let quickSort = function (arr) {
     if (len < 2) return (arr);
 
     // If not turn
-    let pivotIndex = len >> 1;  // let pivotIndex = Math.floor(len / 2);
+    let pivotIndex = Math.floor(len / 2); // 
     let pivotValue = arr.splice(pivotIndex - 1, 1)[0] // using [0], cuz it is an array
 
     let left = [];
@@ -221,7 +220,7 @@ let quickSort = function (arr) {
 
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log("6.快速排序（Quick Sort）");
-console.log(quickSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+console.log(quickSort(arr)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 
 
 
@@ -248,15 +247,13 @@ let quickSort_k_min = function (arr, k) {
     for (let i = 0; i < len - 1; i++) {
         if (arr[i] < pivotValue) {
             left.push(arr[i]);
-        }
-
-        else {
+        } else {
             right.push(arr[i]);
         }
     }
 
     if (left.length == k) {
-        console.log(left);
+        console.log(pivotValue);
         return;
     }
     return quickSort(left).concat([pivotValue], quickSort(right));
@@ -265,7 +262,45 @@ let quickSort_k_min = function (arr, k) {
 
 var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log("6.快速排序（Quick Sort）: 最小的k个数");
-console.log(quickSort(arr, 2));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+console.log(quickSort_k_min(arr, 5)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 
 
-juice, cream topping, ginger, Italian parsley, green cucumber, Napa Cabbage
+// juice, cream topping, ginger, Italian parsley, green cucumber, Napa Cabbage
+
+
+function quickSelect(arr, k) {
+    if (arr.length === 1) {
+        return arr[0];
+    }
+
+    const pivotIndex = Math.floor(Math.random() * arr.length);
+    const pivot = arr[pivotIndex];
+    const left = [];
+    const right = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (i === pivotIndex) {
+            continue;
+        }
+
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+
+    if (k < left.length) {
+        return quickSelect(left, k);
+    } else if (k === left.length) {
+        console.log(1111, left)
+        return pivot;
+    } else {
+        return quickSelect(right, k - left.length - 1);
+    }
+}
+
+const unsortedArray = [3, 6, 8, 10, 1, 2, 1];
+const k = 8; // 寻找第3个最小元素
+const kthSmallest = quickSelect(arr, k - 1); // k - 1 因为数组索引是从0开始的
+console.log(`第 ${k} 个最小元素是: ${kthSmallest}`);
